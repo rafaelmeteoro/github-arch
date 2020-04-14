@@ -48,7 +48,6 @@ platform :android do
   desc "Assemble source and test APKs"
   lane :assemble do
     gradle(task: "assembleDebug")
-    gradle(task: "assembleDebugAndroidTest")
   end
 
   desc "Execute unit test"
