@@ -28,6 +28,11 @@ platform :android do
     gradle(task: "properties")
   end
 
+  desc "Show update dependencies"
+  lane :dependency_updates do
+    gradle(task: "dependencyUpdates")
+  end
+
   desc "Compile debug and test sources"
   lane :compile do
     gradle(task: "compileDebugSources")

@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane android config
 ```
 Output configuration for debugging
+### android dependency_updates
+```
+fastlane android dependency_updates
+```
+Show update dependencies
 ### android compile
 ```
 fastlane android compile
