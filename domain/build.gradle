@@ -1,0 +1,11 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    def domain = rootProject.ext.domain
+
+    implementation domain.dependencies
+    implementation domain.testDependencies
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
