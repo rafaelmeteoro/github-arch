@@ -16,23 +16,48 @@
 default_platform(:android)
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
+  desc "Output configuration for debugging"
+  lane :config do
+    puts is_ci
+    sh("fastlane --version")
+    gradle(task: "--version")
+    sh("fastlane lanes")
+    gradle(task: "tasks")
+    gradle(task: "model")
+    gradle(task: "projects")
+    gradle(task: "properties")
   end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+  desc "Compile debug and test sources"
+  lane :compile do
+    gradle(task: "compileDebugSources")
+    gradle(task: "compileDebugUnitTestSources")
+    gradle(task: "compileDebugAndroidTestSources")
   end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  desc "Execute Android lint"
+  lane :lint do
+    gradle(task: "lintDebug")
+  end
+
+  desc "Assemble source and test APKs"
+  lane :assemble do
+    gradle(task: "assembleDebug")
+    gradle(task: "assembleDebugAndroidTest")
+  end
+
+  desc "Execute unit test"
+  lane :unit_test do
+    gradle(task: "testDebugUnitTest")
+  end
+
+  desc "Local pipeline execution"
+  lane :pipeline do
+    gradle(task: "clean")
+    compile
+    lint
+    assemble
+    unit_test
+    notification(subtitle: "Pipeline finished", message: "Execution successful.")
   end
 end
