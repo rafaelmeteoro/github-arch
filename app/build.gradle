@@ -50,6 +50,12 @@ dependencies {
     // https://stackoverflow.com/a/58073879/5501064
     debugImplementation("androidx.fragment:fragment-testing:1.1.0",
             { exclude group: 'androidx.test', module: 'core' })
+
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':remote')
+    implementation project(':cache')
+    implementation project(':presentation')
 }
 
 androidExtensions {

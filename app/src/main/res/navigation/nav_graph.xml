@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/browseProjectsFragment">
+
+    <fragment
+        android:id="@+id/browseProjectsFragment"
+        android:name="com.meteoro.githubarch.views.browse.BrowseProjectsFragment"
+        android:label="BrowseProjectsFragment"
+        tools:layout="@layout/fragment_browse_projects">
+        <action
+            android:id="@+id/action_browseProjectsFragment_to_bookmarkedProjectsFragment"
+            app:destination="@id/bookmarkedProjectsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookmarkedProjectsFragment"
+        android:name="com.meteoro.githubarch.views.bookmarked.BookmarkedProjectsFragment"
+        android:label="BookmarkedProjectsFragment"
+        tools:layout="@layout/fragment_bookmarked_projects" />
+
+</navigation>
