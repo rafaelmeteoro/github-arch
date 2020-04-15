@@ -1,2 +1,2 @@
 rootProject.name = 'GithubArch'
-include ':domain', ':data', ':remote', ':app'
+include ':domain', ':data', ':remote', ':cache', ':app'

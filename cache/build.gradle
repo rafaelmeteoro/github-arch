@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    def globalConfig = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfig["android_compile_sdk_version"]
+    buildToolsVersion globalConfig["android_build_tools_version"]
+
+    defaultConfig {
+        minSdkVersion globalConfig["android_min_sdk_version"]
+        targetSdkVersion globalConfig["android_target_sdk_version"]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-ruules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    def cache = rootProject.ext.cache
+
+    compileOnly "javax.annotation:jsr250-api:${javax_annotation_version}"
+
+    implementation cache.dependencies
+    implementation cache.testDependencies
+
+    // https://github.com/robolectric/robolectric/issues/5245
+    testImplementation("org.robolectric:robolectric:${robolectric_version}") {
+        exclude group: 'com.google.auto.service', module: 'auto-service'
+    }
+
+    kapt cache.compilers
+
+    implementation project(':data')
+}
