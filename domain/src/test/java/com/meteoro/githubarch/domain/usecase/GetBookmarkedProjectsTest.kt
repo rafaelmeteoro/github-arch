@@ -1,7 +1,7 @@
 package com.meteoro.githubarch.domain.usecase
 
 import com.meteoro.githubarch.domain.fake.FakeProjectFactory
-import com.meteoro.githubarch.domain.repository.ProjectRepository
+import com.meteoro.githubarch.domain.repository.ProjectsRepository
 import com.meteoro.githubarch.domain.thread.ExecutionThread
 import com.meteoro.githubarch.domain.thread.PostExecutionThread
 import io.mockk.MockKAnnotations
@@ -14,7 +14,7 @@ import org.junit.Test
 class GetBookmarkedProjectsTest {
 
     @MockK
-    lateinit var projectsRepository: ProjectRepository
+    lateinit var projectsRepository: ProjectsRepository
 
     @MockK
     lateinit var executionThread: ExecutionThread
