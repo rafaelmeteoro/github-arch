@@ -26,7 +26,7 @@ ext {
 
     // Testing
     junit_version = '4.13'
-    mockK_version = '1.9.3'
+    mockK_version = '1.9.2'
     assertj_version = '3.15.0'
     robolectric_version = '4.3.1'
     arch_core_testing_version = '2.1.0'
