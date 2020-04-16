@@ -46,6 +46,11 @@ Assemble source and test APKs
 fastlane android unit_test
 ```
 Execute unit test
+### android instrumentation_test
+```
+fastlane android instrumentation_test
+```
+Execute instrumentation test on Emulator
 ### android pipeline
 ```
 fastlane android pipeline
